@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="addHeaderLabel">
+      <script>
+        function addCustomScript() {
+          if (window.self !== window.top) {
+            console.log("Atualmente ESTÁ no ambiente do Grape!");
+            return;
+          }
+          const scriptUrl =
+            "/api/files/8298/custom-js/handleCardLabel.js".trim();
+
+          // Evita duplicar: compara pelas URLs absolutas
+          const alreadyLoaded = Array.from(document.scripts).some((s) => {
+            try {
+              return (
+                new URL(s.src, location.href).href ===
+                new URL(scriptUrl, location.href).href
+              );
+            } catch {
+              return false;
+            }
+          });
+          if (alreadyLoaded) return;
+
+          const script = document.createElement("script");
+          script.src = scriptUrl;
+          script.defer = true;
+
+          // Só loga se der erro
+          script.onerror = () =>
+            console.error("Falha ao carregar o script:", scriptUrl);
+
+          document.body.appendChild(script);
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+          setTimeout(() => {
+            addCustomScript();
+          }, 400);
+        });
+      </script>
+    </div>
+  </body>
+</html>
+<!-- 
+
+ 
+-->

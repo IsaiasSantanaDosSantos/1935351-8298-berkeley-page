@@ -5,10 +5,10 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: "./New-project/block-page/NavBar/js/navBar.js",
+  entry: "./js/handleCardLabelCourseDetails.js",
   output: {
-    filename: "navBar.js",
-    path: path.resolve(__dirname, "minified"),
+    filename: "handleCardLabelCourseDetails.js",
+    path: path.resolve(__dirname, "js/minified"),
   },
   module: {
     rules: [
