@@ -1,0 +1,23 @@
+{
+  "name": "berkeley",
+  "version": "1.0.0",
+  "description": "Add label on course cards",
+  "main": "courseDetails.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Isaias",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/node": "^7.23.9",
+    "terser-webpack-plugin": "^5.3.10",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "babel-loader": "^9.1.3"
+  }
+}
