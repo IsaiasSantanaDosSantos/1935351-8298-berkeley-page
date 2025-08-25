@@ -5,9 +5,9 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: "./js/handleCardLabelCourseDetails.js",
+  entry: "./js/handleCardLabelCategory.js",
   output: {
-    filename: "handleCardLabelCourseDetails.js",
+    filename: "handleCardLabelCategory.js",
     path: path.resolve(__dirname, "js/minified"),
   },
   module: {

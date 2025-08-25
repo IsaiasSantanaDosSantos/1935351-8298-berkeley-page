@@ -1,8 +1,6 @@
 function applyVacancyLabels() {
   window.courseStore = courseStore;
   const dados = window.courseStore.get();
-  const courses = dados?.coursesList?.course ?? [];
-  console.log("Dados: ", dados);
 
   // Adiciona o estilo uma vez
   if (!document.querySelector("style.labelStyle")) {
@@ -18,6 +16,7 @@ function applyVacancyLabels() {
     line-height: 20px;
     box-shadow: 0 0 41px -16px #000;
     order: 2;
+    transition: all 300ms;
       }`;
     document.head.appendChild(labelStyle);
   }
@@ -27,8 +26,7 @@ function applyVacancyLabels() {
   );
   cartTitle.forEach((title) => (title.style.order = "3"));
 
-  console.log("courses: ", courses);
-  courses.forEach((course) => {
+  dados.forEach((course) => {
     const id = course.id;
     const vagasStr = course?.camposPersonalizados?.["Total-de-Vagas"];
     if (!vagasStr) return;
@@ -39,14 +37,13 @@ function applyVacancyLabels() {
     const card = document.getElementById(id);
     const courseCard = card?.querySelector(".coursesTextBoxes");
 
-    // const courseCard = document.querySelector(`#${id} .coursesTextBoxes`);
-    console.log("courseCard: ", courseCard);
     if (!courseCard) return;
 
     // Evita criar duplicado
     if (courseCard.querySelector(".numberVacancies")) return;
 
     const label = document.createElement("span");
+    label.dataset.id = id;
     label.className = "numberVacancies";
 
     if (vagas <= 0) {
@@ -65,19 +62,40 @@ function applyVacancyLabels() {
     // Adiciona no card (posição relativa)
     courseCard.appendChild(label);
   });
+
   getMoreCourseEvent();
 }
 
 function getMoreCourseEvent() {
   const moreBtn = document.querySelector(".moreBtn");
+  const temasCourses = document.querySelectorAll(".temasCourses");
+  const optionsCourses = document.querySelectorAll(".optionsCourses");
   if (moreBtn) {
     moreBtn.addEventListener("click", () => {
-      console.log("Clicou");
-
       // Aguarda os novos cards serem renderizados (ajuste o tempo se necessário)
       setTimeout(() => {
         applyVacancyLabels();
       }, 1000); // 500ms geralmente é suficiente
+    });
+  }
+  if (temasCourses) {
+    temasCourses.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        // Aguarda os novos cards serem renderizados (ajuste o tempo se necessário)
+        setTimeout(() => {
+          applyVacancyLabels();
+        }, 1000); // 500ms geralmente é suficiente
+      });
+    });
+  }
+  if (optionsCourses) {
+    optionsCourses.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        // Aguarda os novos cards serem renderizados (ajuste o tempo se necessário)
+        setTimeout(() => {
+          applyVacancyLabels();
+        }, 1000); // 500ms geralmente é suficiente
+      });
     });
   }
 }
