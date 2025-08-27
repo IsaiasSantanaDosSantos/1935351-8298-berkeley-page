@@ -25,7 +25,6 @@ function applyVacancyLabels() {
     ".allCoursesBox .coursesInfoContent"
   );
   cartTitle.forEach((title) => (title.style.order = "3"));
-
   dados.forEach((course) => {
     const id = course.id;
     const vagasStr = course?.camposPersonalizados?.["Total-de-Vagas"];
@@ -39,7 +38,7 @@ function applyVacancyLabels() {
 
     if (!courseCard) return;
 
-    // Evita criar duplicado
+    // Evita criar duplicado // 725708
     if (courseCard.querySelector(".numberVacancies")) return;
 
     const label = document.createElement("span");
@@ -50,7 +49,7 @@ function applyVacancyLabels() {
       label.innerHTML =
         "Vagas <span style='font-weight:bold;'>esgotadas</span>";
       label.style.backgroundColor = "#747474";
-    } else if (vagas < 6) {
+    } else if (vagas < 5) {
       label.innerHTML = "Últimas <span style='font-weight:bold;'>vagas</span>";
       label.style.backgroundColor = "#FF2C2C";
     } else {
@@ -63,7 +62,9 @@ function applyVacancyLabels() {
     courseCard.appendChild(label);
   });
 
-  getMoreCourseEvent();
+  setTimeout(() => {
+    getMoreCourseEvent();
+  }, 500);
 }
 
 function getMoreCourseEvent() {

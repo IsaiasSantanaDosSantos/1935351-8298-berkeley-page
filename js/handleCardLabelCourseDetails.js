@@ -64,7 +64,7 @@ function handleLabel(vagas) {
     labelBox.style.backgroundColor = "#747474";
     descriptionBox.style.width = "100%";
     formBox.style.display = "none";
-  } else if (vagas < 6) {
+  } else if (vagas < 5) {
     labelBox.innerHTML = "Últimas <span style='font-weight:bold;'>vagas</span>";
     labelBox.style.backgroundColor = "#FF2C2C";
   } else {

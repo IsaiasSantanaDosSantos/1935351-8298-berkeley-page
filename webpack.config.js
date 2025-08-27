@@ -1,4 +1,4 @@
-// Comando: webpack --config ./webpack.config.js --mode production
+// Comando: npm run build
 
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
